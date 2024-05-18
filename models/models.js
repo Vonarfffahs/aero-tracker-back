@@ -25,10 +25,10 @@ const Registration = sequelize.define('registration', {
     flight_permission: {type: DataTypes.BOOLEAN, allowNull: false},
 });
 
-Passenger.hasMany(Registration);
+Passenger.hasMany(Registration, { onDelete: 'CASCADE', hooks: true });
 Registration.belongsTo(Passenger);
 
-Flight.hasMany(Registration);
+Flight.hasMany(Registration, { onDelete: 'CASCADE', hooks: true });
 Registration.belongsTo(Flight);
 
 module.exports = {
